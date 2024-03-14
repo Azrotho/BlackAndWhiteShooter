@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqkhfjklj6xsd"]
+
+[ext_resource type="Texture2D" uid="uid://bq1ms57envt27" path="res://icon.svg" id="1_08q1o"]
+[ext_resource type="Script" path="res://Script/Enemy.gd" id="1_blacn"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_blacn")
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-3, -7)
+texture = ExtResource("1_08q1o")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

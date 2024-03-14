@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://1jaau8tb75ch"]
+
+[ext_resource type="Script" path="res://Script/Bullet.gd" id="1_4yggi"]
+[ext_resource type="Shader" path="res://Shader/Outline.gdshader" id="2_b23um"]
+[ext_resource type="Texture2D" uid="uid://byd5a1mpyik3s" path="res://Sprite/bullet.png" id="2_ycq54"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_121mi"]
+shader = ExtResource("2_b23um")
+shader_parameter/line_color = Color(0, 1, 1, 1)
+shader_parameter/line_thickness = 1.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ominw"]
+radius = 3.0
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_4yggi")
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="Bullet" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_121mi")
+texture = ExtResource("2_ycq54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("CircleShape2D_ominw")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

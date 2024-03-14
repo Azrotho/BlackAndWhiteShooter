@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://u4evt427avf0"]
+
+[ext_resource type="PackedScene" uid="uid://cqkhfjklj6xsd" path="res://Scenes/Enemy.tscn" id="1_s6ecm"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_s6ecm")]
+position = Vector2(575, 262)
+rotate_speed = null
+shooter_timer_wait_time = null
+spawn_point_count = null
+radius = null
